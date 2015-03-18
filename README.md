@@ -1,4 +1,4 @@
-# title: Door detection based on color
+# Door detection based on color
 
 ## Introduction
 Door detection based on color for SEES project. For a given image, user choose a color block in a rectangle, program will find the average and variance of the HSV values in the rectangle, for [Three-sigma rule](http://www.encyclopediaofmath.org/index.php/Three-sigma_rule), we can find the best matched object, the algorithm was shown in function showMatInfo.

@@ -1,3 +1,6 @@
+/* Written by Xiongmin Lin <linxiongmin@gmail.com>, ISIMA, Clermont-Ferrand  *
+ * (c++) 2015. All rights reserved.                                          */
+
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv/cv.h"
