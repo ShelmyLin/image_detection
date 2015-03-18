@@ -1,12 +1,9 @@
-title: Door detection based on color
-date: 2015-03-16 22:15
-tags: 
-	- image processing
----
-# Introduction
+# title: Door detection based on color
+
+## Introduction
 Door detection based on color for SEES project. For a given image, user choose a color block in a rectangle, program will find the average and variance of the HSV values in the rectangle, for [Three-sigma rule](http://www.encyclopediaofmath.org/index.php/Three-sigma_rule), we can find the best matched object, the algorithm was shown in function showMatInfo.
 
-# Source code
+## Source code
 ```
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
@@ -230,45 +227,47 @@ void getDoor(Mat &m_src, Mat &m_dst)
 
 
 ```
-# Explaination
-## imread
+## Explaination
+### imread
 ```
 src = imread(src_name);
 ```
 imread(src_name), read image.
 
-## cvtColor
+### cvtColor
 ```
 cvtColor(src, src_HSV, CV_BGR2HSV);
 ```
 cvtColor(src, src_HSV, CV_BGR2HSV), covert the color of the image from BGR to HSV.
 
-## imshow
+### imshow
 ```
 imshow("door trainning", src);
 ```
 show the image in a window.
 
-## setMouseCallback
+### setMouseCallback
 ```
 setMouseCallback("door trainning", onMouse, NULL);
 ```
 set mouse event, responsable for mouse-click, mouse-move event, for more detail, click [setMouseCallback in OpenCV](http://docs.opencv.org/modules/highgui/doc/user_interface.html?highlight=setmousecallback#void setMouseCallback(const string& winname, MouseCallback onMouse, void* userdata))
 
-## inRange
+### inRange
 ```
 inRange(src_HSV, Scalar(lowerH, lowerS, lowerV), Scalar(upperH, upperS, upperV), img);
 ```
 inRange, for given ranges in HSV, return a filtered image. For more detail, click [inRange](http://docs.opencv.org/modules/core/doc/operations_on_arrays.html?highlight=inrange#void inRange(InputArray src, InputArray lowerb, InputArray upperb, OutputArray dst))
 
-## findContours
+### findContours
 ```
 findContours(m_src, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE, Point(0, 0));
 
 ```
 findContours, just like its name, find the contours of the image. For more detail, click [findContours](http://docs.opencv.org/modules/imgproc/doc/structural_analysis_and_shape_descriptors.html?highlight=findcontours#void findContours(InputOutputArray image, OutputArrayOfArrays contours, OutputArray hierarchy, int mode, int method, Point offset))
 
-# Result
-<iframe width="854" height="510" src="https://www.youtube.com/embed/i8WmK0oiHu4" frameborder="0" allowfullscreen></iframe>
+## reference
+1. [http://opencv-srf.blogspot.fr/2010/09/object-detection-using-color-seperation.html](http://opencv-srf.blogspot.fr/2010/09/object-detection-using-color-seperation.html)
+2. [http://opencv-srf.blogspot.fr/2011/11/mouse-events.html](http://opencv-srf.blogspot.fr/2011/11/mouse-events.html)
+3. [http://docs.opencv.org/doc/tutorials/imgproc/shapedescriptors/find_contours/find_contours.html#find-contours](http://docs.opencv.org/doc/tutorials/imgproc/shapedescriptors/find_contours/find_contours.html#find-contours)
 
 
